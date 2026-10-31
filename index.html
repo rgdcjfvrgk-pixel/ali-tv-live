@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#070b14">
+<title>عـلـي TV | المباريات</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#070b14;color:white;
+ font-family:Arial,sans-serif;padding:16px
+}
+header{
+ text-align:center;padding:18px;
+ font-size:27px;font-weight:bold;color:#15c9ff
+}
+.subtitle{text-align:center;color:#aaa;margin-bottom:20px}
+.card{
+ background:#111b2b;border:1px solid #26364b;
+ border-radius:16px;padding:15px;margin-bottom:18px
+}
+.live{text-align:center;color:#ff4242;font-weight:bold}
+video{
+ width:100%;aspect-ratio:16/9;
+ background:#000;border-radius:12px;display:block
+}
+button{
+ width:100%;padding:14px;border:0;border-radius:10px;
+ background:#08a9df;color:white;font-size:17px;
+ font-weight:bold;margin-top:12px
+}
+.telegram{
+ background:linear-gradient(135deg,#087fba,#07558b);
+ text-align:center;padding:22px;border-radius:16px
+}
+.telegram p{color:#e1f4ff;line-height:1.8}
+.telegram a{
+ display:block;background:white;color:#087fba;
+ text-decoration:none;padding:13px;border-radius:10px;
+ font-weight:bold
+}
+footer{text-align:center;color:#65758a;font-size:12px;padding:20px}
+</style>
+</head>
+<body>
+
+<header>عـلـي TV</header>
+<div class="subtitle">بوابتك لمشاهدة المباريات ⚽</div>
+
+<div class="card">
+ <div class="live">● بث مباشر</div>
+ <h3 style="text-align:center">قناة المباريات</h3>
+ <video id="player" controls playsinline autoplay></video>
+ <button onclick="document.getElementById('player').play()">
+ ▶ تشغيل البث
+ </button>
+</div>
+
+<div class="telegram">
+ <h3>📢 تابع قناتنا على تيليجرام</h3>
+ <p>انضم إلى قناتنا ليصلك كل جديد ومواعيد المباريات والبثوث.</p>
+ <a href="https://t.me/GOAL365a" target="_blank">
+ الدخول إلى قناة التليجرام
+ </a>
+</div>
+
+<footer>جميع الحقوق محفوظة © عـلـي TV</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script>
+const STREAM_URL = "PASTE_FULL_STREAM_URL_HERE";
+const video = document.getElementById("player");
+
+if (STREAM_URL !== "PASTE_FULL_STREAM_URL_HERE") {
+ if (video.canPlayType("application/vnd.apple.mpegurl")) {
+   video.src = STREAM_URL;
+ } else if (Hls.isSupported() && STREAM_URL.includes(".m3u8")) {
+   const hls = new Hls();
+   hls.loadSource(STREAM_URL);
+   hls.attachMedia(video);
+ } else {
+   video.src = STREAM_URL;
+ }
+}
+</script>
+
+</body>
+</html>
